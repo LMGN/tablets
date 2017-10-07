@@ -272,32 +272,6 @@ AddCommand("l!rotspeed","Set the rotation speed multiplier (from 25 to -25)","l!
 	end)
 end)
 
-AddCommand("l!models","Searches for a freemodel in the library","l!models cat","Bright blue",function(Message)
-	pcall(function()
-		RemoveTablets()
-		local insertService = game:GetService("InsertService")
-		local page = unpack(insertService:GetFreeModels(Message,0))
- 
-		for i = 1,page.TotalCount do
-			local item = page.Results[i]
-			textureTablet(Output(i..": "..item.Name.." by "..item.CreatorName..newline.."ID: "..item.AssetId,Color3.new(random(100) / 100,random(100) / 100,random(100) / 100)), "https://www.roblox.com/Thumbs/Asset.ashx?width=110&height=110&assetId="..item.AssetId)
-		end
-	end)
-end)
-
-AddCommand("l!decals","Searches for a decal in the library","l!decals dog","Bright blue",function(Message)
-	pcall(function()
-		RemoveTablets()
-		local insertService = game:GetService("InsertService")
-		local page = unpack(insertService:GetFreeDecals(Message,0))
- 
-		for i = 1,page.TotalCount do
-			local item = page.Results[i]
-			textureTablet(Output(i..": "..item.Name.." by "..item.CreatorName..newline.."ID: "..item.AssetId,Color3.new(random(100) / 100,random(100) / 100,random(100) / 100)), "https://www.roblox.com/Thumbs/Asset.ashx?width=110&height=110&assetId="..item.AssetId)
-		end
-	end)
-end)
-
 
 AddCommand("l!saudio","Searches for a audio in the library","l!saudio atrius","Bright blue",function(Message)
 	pcall(function()
