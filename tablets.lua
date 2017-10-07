@@ -322,9 +322,9 @@ table.insert(handlers,player.Chatted:connect(OnChatted))
 
 
 coroutine.resume(coroutine.create(function()
-	table.insert(handlers,game:GetService("RunService").RenderStepped:connect(function()
+	while true do
 		UpdateTablets()
-	end))
+	end
 end))
 	
 RemoveTablets()
@@ -339,4 +339,4 @@ Output("Random "..randomtip..". Click for more tips.", Color3.new(random(100) / 
 end)
 end
 wait(1)
-lmgnTabs(game.Players.%player%)
+lmgnTabs(game.Players.TheLMGN)
