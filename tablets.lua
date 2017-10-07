@@ -294,7 +294,7 @@ AddCommand("l!killscript","Attempts to disconnect all handlers and kill all tabl
 		v:Disconnect()
 	end
 	local part = Output("All connections and tablets have been destroyed. You will need to reload the script to get commands back."..newline..newline.."Was that an accedent? Click this to reload the script","Bright red", function()
-		lmgnTabs(game.Players.LocalPlayer)
+		lmgnTabs(game.Players.%player%)
 	end)
 	for i=1,230 do 
 		part.Size = Vector3.new(2.3 - ((i) / 100),2.3 - ((i) / 100),2.3 - ((i) / 100))
@@ -322,7 +322,7 @@ table.insert(handlers,player.Chatted:connect(OnChatted))
 
 
 coroutine.resume(coroutine.create(function()
-	while true do
+	while wait() do
 		UpdateTablets()
 	end
 end))
@@ -339,4 +339,4 @@ Output("Random "..randomtip..". Click for more tips.", Color3.new(random(100) / 
 end)
 end
 wait(1)
-lmgnTabs(game.Players.TheLMGN)
+lmgnTabs(game.Players.%player%)
