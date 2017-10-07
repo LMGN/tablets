@@ -365,4 +365,4 @@ Output("Random "..randomtip..". Click for more tips.", Color3.new(random(100) / 
 end)
 end
 wait(1)
-lmgnTabs(game.Players.LocalPlayer)
+lmgnTabs(game.Players.%player%)
