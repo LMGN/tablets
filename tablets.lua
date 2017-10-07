@@ -1,7 +1,7 @@
 
 function lmgnTabs(player)
 local Character = player.Character
-local Torso = Character:WaitForChild"UpperTorso";
+local Torso = Character.UpperTorso;
 local Tablets = {};
 local Commands = {};
 local handlers = {};
@@ -272,6 +272,32 @@ AddCommand("l!rotspeed","Set the rotation speed multiplier (from 25 to -25)","l!
 	end)
 end)
 
+AddCommand("l!models","Searches for a freemodel in the library","l!models cat","Bright blue",function(Message)
+	pcall(function()
+		RemoveTablets()
+		local insertService = game:GetService("InsertService")
+		local page = unpack(insertService:GetFreeModels(Message,0))
+ 
+		for i = 1,page.TotalCount do
+			local item = page.Results[i]
+			textureTablet(Output(i..": "..item.Name.." by "..item.CreatorName..newline.."ID: "..item.AssetId,Color3.new(random(100) / 100,random(100) / 100,random(100) / 100)), "https://www.roblox.com/Thumbs/Asset.ashx?width=110&height=110&assetId="..item.AssetId)
+		end
+	end)
+end)
+
+AddCommand("l!decals","Searches for a decal in the library","l!decals dog","Bright blue",function(Message)
+	pcall(function()
+		RemoveTablets()
+		local insertService = game:GetService("InsertService")
+		local page = unpack(insertService:GetFreeDecals(Message,0))
+ 
+		for i = 1,page.TotalCount do
+			local item = page.Results[i]
+			textureTablet(Output(i..": "..item.Name.." by "..item.CreatorName..newline.."ID: "..item.AssetId,Color3.new(random(100) / 100,random(100) / 100,random(100) / 100)), "https://www.roblox.com/Thumbs/Asset.ashx?width=110&height=110&assetId="..item.AssetId)
+		end
+	end)
+end)
+
 
 AddCommand("l!saudio","Searches for a audio in the library","l!saudio atrius","Bright blue",function(Message)
 	pcall(function()
@@ -286,21 +312,6 @@ AddCommand("l!saudio","Searches for a audio in the library","l!saudio atrius","B
 			end)
 		end
 	end)
-end)
-
-AddCommand("l!killscript","Attempts to disconnect all handlers and kill all tablets. the LMGNTablets script.","l!killscript","Really red",function(Message)
-	RemoveTablets()
-	for i,v in pairs(handlers) do
-		v:Disconnect()
-	end
-	local part = Output("All connections and tablets have been destroyed. You will need to reload the script to get commands back."..newline..newline.."Was that an accedent? Click this to reload the script","Bright red", function()
-		lmgnTabs(game.Players.%player%)
-	end)
-	for i=1,230 do 
-		part.Size = Vector3.new(2.3 - ((i) / 100),2.3 - ((i) / 100),2.3 - ((i) / 100))
-		wait(0.01)
-	 end
-	RemoveTablets()
 end)
 
 AddCommand("l!createtabs","Create x amount of tablets","l!createtabs 10","Bright yellow",function(Message)
@@ -325,6 +336,9 @@ coroutine.resume(coroutine.create(function()
 	while wait() do
 		UpdateTablets()
 	end
+table.insert(handlers,game:GetService("RunService").RenderStepped:connect(function()
+ 		UpdateTablets()
+ 	end))
 end))
 	
 RemoveTablets()
@@ -339,4 +353,4 @@ Output("Random "..randomtip..". Click for more tips.", Color3.new(random(100) / 
 end)
 end
 wait(1)
-lmgnTabs(game.Players.%player%)
+lmgnTabs(game.Players.TheLMGN)
