@@ -217,11 +217,17 @@ AddCommand("l!audio ","Plays an audio!","l!audio 339922286","Deep orange",functi
 					brick.PointLight.Brightness = Sound.PlaybackLoudness / 100
 					brick.PointLight.Range = Sound.PlaybackLoudness / 50
 					if Sound.PlaybackLoudness < 100 then
-						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 🔈"..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
+						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 
+🔈
+"..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
 					elseif Sound.PlaybackLoudness < 500 then
-						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 🔉"..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
+						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 
+🔉
+"..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
 					else
-						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 🔊 "..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
+						brick.BillboardGui.TextLabel.Text = ("Song Playing: "..audioAsset.Name.." 
+🔊
+ "..math.floor(Sound.TimeLength - Sound.TimePosition).." seconds remain ("..math.floor((Sound.TimePosition / Sound.TimeLength) * 100).."%)")
 					end
 					if Sound.Playing == false then
 						brick:Destroy()
